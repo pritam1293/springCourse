@@ -9,9 +9,9 @@ import java.util.List;
 
 @RestController
 public class MyContoller {
+
     @Autowired
     private CourseService courseService;
-
 
     @GetMapping("/home")
     public String home() {
@@ -36,5 +36,15 @@ public class MyContoller {
     @PostMapping(path = "/courses", consumes = "application/json")
     public Course addCourse(@RequestBody Course course) {
         return this.courseService.addCourse(course);
+    }
+
+    @PutMapping(path = "/courses",consumes = "application/json")
+    public Course updateCourse(@RequestBody Course course) {
+        return this.courseService.updateCourse(course);
+    }
+
+    @DeleteMapping("/courses/{courseId}")
+    public Course deleteCourse(@PathVariable String courseId) {
+        return this.courseService.deleteCourse(Long.parseLong(courseId));
     }
 }

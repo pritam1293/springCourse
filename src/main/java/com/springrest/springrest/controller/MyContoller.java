@@ -38,11 +38,13 @@ public class MyContoller {
         return this.courseService.addCourse(course);
     }
 
+    //update a course with a given course
     @PutMapping(path = "/courses",consumes = "application/json")
     public Course updateCourse(@RequestBody Course course) {
         return this.courseService.updateCourse(course);
     }
 
+    //delete a course with a given courseId
     @DeleteMapping("/courses/{courseId}")
     public Course deleteCourse(@PathVariable String courseId) {
         return this.courseService.deleteCourse(Long.parseLong(courseId));
